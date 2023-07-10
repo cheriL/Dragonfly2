@@ -3,7 +3,7 @@
 set -e
 
 REPO=${REPO:-dragonflyoss}
-TAG=${TAG:-latest}
+TAG=${TAG:-v2.0.9}
 
 DIR=$(cd "$(dirname "$0")" && pwd)
 cd $DIR
@@ -38,7 +38,7 @@ run_container(){
         --env MARIADB_PASSWORD="dragonfly" \
         --env MARIADB_DATABASE="manager" \
         --env MARIADB_ALLOW_EMPTY_ROOT_PASSWORD="yes" \
-        mariadb:10.6
+        mariadb:10.2.44
 
     printf "create dragonfly-manager "
     ${RUNTIME} run -d --name dragonfly-manager --restart=always --net=host \

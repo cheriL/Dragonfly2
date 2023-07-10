@@ -14,7 +14,7 @@ services:
       - 6379:6379
 
   mysql:
-    image: mariadb:10.6
+    image: mariadb:10.2.44
     container_name: mysql
     environment:
       - MARIADB_USER=dragonfly
@@ -30,7 +30,7 @@ services:
       - 3306:3306
 
   manager:
-    image: dragonflyoss/manager:latest
+    image: dragonflyoss/manager:v2.0.9
     container_name: manager
     depends_on:
       - redis
@@ -49,7 +49,7 @@ services:
       - 8080:8080
 
   dfdaemon:
-    image: dragonflyoss/dfdaemon:latest
+    image: dragonflyoss/dfdaemon:v2.0.9
     depends_on:
       - manager
       - scheduler
@@ -70,7 +70,7 @@ services:
       - 65002:65002
 
   scheduler:
-    image: dragonflyoss/scheduler:latest
+    image: dragonflyoss/scheduler:v2.0.9
     depends_on:
       - manager
     container_name: scheduler
@@ -87,7 +87,7 @@ services:
       - 8002:8002
 
   seed-peer:
-    image: dragonflyoss/dfdaemon:latest
+    image: dragonflyoss/dfdaemon:v2.0.9
     depends_on:
       - manager
       - scheduler
